@@ -21,6 +21,15 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      interes_1: {
+        type: Sequelize.STRING,
+      },
+      interes_2: {
+        type: Sequelize.STRING,
+      },
+      interes_3: {
+        type: Sequelize.STRING,
+      },
       drink: {
         type: Sequelize.BOOLEAN,
       },
@@ -34,7 +43,7 @@ module.exports = {
         type: Sequelize.BOOLEAN,
       },
       social_networks: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.STRING,
       },
       communication: {
         type: Sequelize.BOOLEAN,
