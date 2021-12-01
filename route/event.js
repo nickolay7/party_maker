@@ -3,13 +3,13 @@ const { Event, User } = require('../db/models');
 
 router
   .route('/')
-  .get(async (req, res) => {
+  .get((req, res) => {
     if (req.session.user) {
       res.render('createEvent');
     }
     res.redirect('/reg');
   })
-  .post(async (req, res) => {
+  .post((req, res) => {
     if (req.session.user) {
       res.render('createEvent');
     }
@@ -17,15 +17,4 @@ router
   });
 
 module.exports = router;
- /*
- ## tableName
-profileQuestionare
 
-## Fields 
-{{interests.myProp}} ##свойство объекта интереса. 
-{{doYouSmoke}}
-{{doYouDrink}}
-{{wannaChat}}
-{{nightGoal.property}}
-{{linkSocialHtml}} 
-*/

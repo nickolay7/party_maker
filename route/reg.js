@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
-const { Entry, User } = require("../db/models/");
+const { User } = require('../db/models');
 
 router
   .route('/')
@@ -19,9 +19,21 @@ router
     const userToLogin = await User.create({ name, pass: hash, email });
 
     req.session.user = userToLogin.name;
-    req.session.userId = userToLogin.id;
-    res.redirect('/personal');
+    req.session.userid = userToLogin.id;
+    res.redirect('/reg/form');
+  });
+router
+  .route('/form')
+  .get((req, res) => {
+    const { error } = req.query;
+    res.render('form', { error }); // глянуть название формы
+  })
+  .post(async (req, res) => {
 
+   // const { name, password, email } = req.body; // 
+    const userToRegister = await User.findOne({ where: { name: req.session.user } });
+
+    res.redirect('/personal');
   });
 
 module.exports = router;
