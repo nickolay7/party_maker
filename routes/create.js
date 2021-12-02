@@ -5,7 +5,7 @@ router
   .route('/')
   .get(async (req, res) => {
     // if (req.session.user) {
-      res.render('editEvent');
+      res.render('editEvent', {  });
     // }
     // res.redirect('/reg');
   })
@@ -21,11 +21,11 @@ module.exports = router;
  ## tableName
 profileQuestionare
 
-## Fields 
-{{interests.myProp}} ##свойство объекта интереса. 
+## Fields
+{{interests.myProp}} ##свойство объекта интереса.
 {{doYouSmoke}}
 {{doYouDrink}}
 {{wannaChat}}
 {{nightGoal.property}}
-{{linkSocialHtml}} 
+{{linkSocialHtml}}
 */
