@@ -5,6 +5,8 @@ const { User } = require('../db/models');
 router
   .route('/')
   .get((req, res) => {
+    req.session.destroy();
+    res.cookie('sid', '00', { expires: new Date() }) // серверное удаление куки по имени
     const { error } = req.query;
     res.render('reg', { error });
   })
@@ -26,7 +28,7 @@ router
   .route('/form')
   .get((req, res) => {
     const { error } = req.query;
-    res.render('form', { error }); // глянуть название формы
+    res.render('profile', { error }); // глянуть название формы
   })
   .post(async (req, res) => {
 
