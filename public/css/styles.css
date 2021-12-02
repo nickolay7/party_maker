@@ -1,0 +1,29 @@
+a {
+    text-decoration: none;
+}
+
+body {
+    background: url('../img/event_bg.jpg') no-repeat center center fixed;
+    background-size: 80%;
+}
+
+p, h1, h3 {
+    text-align: center;
+}
+
+.channel div {
+    width: 10vh;
+    height: 3vh;
+    border-radius: 50%;
+    background: blue;
+    text-align: center;
+    color: white;
+}
+
+li {
+    list-style-type: none;
+}
+
+img {
+    width: 300px;
+}
