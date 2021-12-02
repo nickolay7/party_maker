@@ -47,7 +47,7 @@ module.exports = router;
 //   // const user = await User.findOne({ where: { id: 1 } });
 //   // console.log(user);
 //   // eslint-disable-next-line no-trailing-spaces
-//   const entry = await Entry.create({event_id: 1, user_id: 3})
+//   const entry = await Entry.create({event_id: 2, user_id: 3})
 //   const event = await Event.findOne({
 //     include: User,
 //     where: { event_identifier: 'Набор_цифр&букв' },

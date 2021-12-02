@@ -33,7 +33,7 @@ router
   .post(async (req, res) => {
     console.dir(req.body)
     const { interes_1, interes_2, interes_3, } = req.body; //
-    const upd = await User.update({ interes_1, interes_2, interes_3}, {
+    await User.update({ interes_1, interes_2, interes_3}, {
       where: {
         id: req.session.userid,
       }

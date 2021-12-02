@@ -4,11 +4,18 @@ const { Event, User } = require('../db/models');
 router
   .route('/')
   .get(async (req, res) => {
-    const user = await User.findOne({include: Event, where: { id: req.session.userid } });
-    const memberEvents = user.dataValues.Events;
     // const organizer = await Event.findAll({where: {organizer: req.session.userid}})
-console.log(memberEvents[0].dataValues.title);
-    res.render('userEditMain', { memberEvents });
+    const member = await User.findOne({
+      include: Event,
+      where: { id: req.session.userid },
+    });
+
+    const memberEvents = member?.dataValues.Events;
+    if (memberEvents.length !== 0) {
+      res.render('userEditMain', { memberEvents });
+    }
+
+    res.render('userEditMain');
   })
   .post(async (req, res) => {
     // const {параметры человека} = req.body
