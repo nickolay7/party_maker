@@ -9,12 +9,12 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
-const socketio = require('socket.io');
-const http = require('http');
+const { app, serverStart } = require('./server');
+// const socketio = require('socket.io');
 
-const app = express();
-const server = http.createServer(app);
-const io = socketio(server);
+// const server = http.createServer(app);
+// const io = socketio(server);
+serverStart().then();
 
 const sessionConfig = {
   store: new FileStore(),
@@ -65,4 +65,4 @@ app.use('/join', joinRouter);
 app.use('/event', eventRouter);
 app.use('/edit', editRouter);
 
-module.exports = server;
+// module.exports = server;
