@@ -12,13 +12,13 @@ router
   })
   .post(async (req, res) => {
     const { name, password, email } = req.body;
-    const userToRegister = await User.findOne({ where: { name } });
+    const userToRegister = await User.findOne({ where: { name: name } });
 
     if (userToRegister) {
       return res.redirect('/reg?error=user_already_exists');
     }
     const hash = await bcrypt.hash(password, 10);
-    const userToLogin = await User.create({ name, pass: hash, email });
+    const userToLogin = await User.create({ name, password: hash, email });
 
     req.session.user = userToLogin.name;
     req.session.userid = userToLogin.id;
@@ -31,10 +31,13 @@ router
     res.render('profile', { error }); // глянуть название формы
   })
   .post(async (req, res) => {
-
-   // const { name, password, email } = req.body; // 
-    const userToRegister = await User.findOne({ where: { name: req.session.user } });
-
+    console.dir(req.body)
+    const { interes_1, interes_2, interes_3, } = req.body; //
+    const upd = await User.update({ interes_1, interes_2, interes_3}, {
+      where: {
+        id: req.session.userid,
+      }
+    });
     res.redirect('/personal');
   });
 
