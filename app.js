@@ -1,3 +1,7 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/no-extraneous-dependencies */
 const express = require('express');
 const createError = require('http-errors');
 const logger = require('morgan');
@@ -28,25 +32,28 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(session(sessionConfig));
 // главная
 const indexRouter = require('./routes/index');
-//регистрация
+// регистрация
 const regRouter = require('./routes/reg');
 // логин
-const loginRouter = require('./routes/reg');
-//логаут
-const logoutRouter = require('./routes/reg');
+const loginRouter = require('./routes/login');
+// логаут
+const logoutRouter = require('./routes/logout');
 // личный кабинет
 const personalRouter = require('./routes/personal');
 // создать мероприие
 const createRouter = require('./routes/create');
 // присоединится
 const joinRouter = require('./routes/join');
-
+// страница ивента
+const eventRouter = require('./routes/event');
+// страница редактирования ивента
+const editRouter = require('./routes/edit');
 
 app.use('/', indexRouter);
 app.use('/reg', regRouter);
@@ -55,6 +62,7 @@ app.use('/logout', logoutRouter);
 app.use('/personal', personalRouter);
 app.use('/create', createRouter);
 app.use('/join', joinRouter);
+app.use('/event', eventRouter);
+app.use('/edit', editRouter);
 
 // module.exports = server;
-

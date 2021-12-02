@@ -28,6 +28,15 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    interes_1: {
+      type: DataTypes.STRING,
+    },
+    interes_2: {
+      type: DataTypes.STRING,
+    },
+    interes_3: {
+      type: DataTypes.STRING,
+    },
     drink: {
       type: DataTypes.BOOLEAN,
     },
@@ -41,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
     },
     social_networks: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
     },
     communication: {
       type: DataTypes.BOOLEAN,

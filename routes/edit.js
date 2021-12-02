@@ -14,18 +14,6 @@ router
       res.render('createEvent');
     }
     res.redirect('/reg');
-  });
+  }); // редактирование мероприятия
 
 module.exports = router;
- /*
- ## tableName
-profileQuestionare
-
-## Fields 
-{{interests.myProp}} ##свойство объекта интереса. 
-{{doYouSmoke}}
-{{doYouDrink}}
-{{wannaChat}}
-{{nightGoal.property}}
-{{linkSocialHtml}} 
-*/
