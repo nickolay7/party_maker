@@ -9,8 +9,8 @@ router.route('/:eventId').get(async (req, res) => {
   //! Работает не только в теории, но и на практике
   const user = await User.findOne({ where: { id: req.session.userid } });
 
-  const event = await User.findAll({
-    include: Event,
+  const event = await Event.findAll({
+    include: User,
     where: { event_identifier: req.params.eventId },
   });
 
@@ -31,7 +31,7 @@ router.route('/:eventId').get(async (req, res) => {
       || e.dataValue.interes_2 == user.interes_3
       || e.dataValue.interes_3 == user.interes_3;
   });
-  res.render('event', {
+  res.render('ifLogin', {
     event,
     interes_1,
     interes_2,
