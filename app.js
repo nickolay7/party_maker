@@ -19,7 +19,7 @@ serverStart().then();
 const sessionConfig = {
   store: new FileStore(),
   name: 'sid',
-  secret: `${process.env.SESSION_SECRET}`,
+  secret: process.env.SESSION_SECRET ?? ['keyboard cat', 'old keyword'],
   resave: false,
   saveUninitialized: false,
   cookie: {
