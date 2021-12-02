@@ -14,16 +14,12 @@
     <hr>
     <div class="d-flex justify-content-around"><h4>All events</h4><a style="display: block; text-decoration: none; font-size: 25px" href="#">+</a></div>
     <hr>
-    <ul>
-      <!--  {{#each events}}-->
-      <!--    <li>-->
-      <!--      &lt;!&ndash;      {{event}}{{status}}&ndash;&gt;-->
-      <!--      title1 Status <a href="#">Open/Close</a><a href="#">Edit</a>-->
-      <!--    </li>-->
-      <!-- start event block -->
+    {{#each memberEvents}}
+        <li>
+        <a href="#">Edit</a>
+        </li>
       <div class="d-flex bd-highlight">
-        <h3 class="pe-3">Title</h3>
-        <h3 class="pe-3">Status</h3>
+        <h3 class="pe-3">  {{this.dataValues.title}}</h3>
         <ul class="nav nav-pills">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Удалить</a>
@@ -36,8 +32,26 @@
           </li>
         </ul>
       </div>
-      <!-- finish event block -->
-      <!--  {{/each}}-->
+      {{/each}}
+          {{#each memberEvents}}
+        <li>
+        <a href="#">Edit</a>
+        </li>
+      <div class="d-flex bd-highlight">
+        <h3 class="pe-3">  {{this.dataValues.title}}</h3>
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Удалить</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Редактировать</a>
+          </li>
+        </ul>
+      </div>
+      {{/each}}
     </ul>
   </div>
 </div>
