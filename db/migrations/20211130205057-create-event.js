@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false,
       },
       organizer: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       event_date: {
@@ -27,6 +27,9 @@ module.exports = {
       event_identifier: {
         type: Sequelize.STRING,
         allowNull: false,
+      },
+      description: {
+        type: Sequelize.TEXT,
       },
       createdAt: {
         allowNull: false,
