@@ -8,47 +8,52 @@
         <a class="nav-link" href="#"></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="#">Мероприятия</a>
+        <a class="nav-link" href="/">Home</a>
       </li>
     </ul>
     <hr>
+        <form action="/join" method='POST'>
+     <input name = 'title' type="text" placeholder="Ссылка приглашения" class="mb-2"><br>
+    <button class="btn btn-info mb-3">Connect to event</button>
+  </form>
     <div class="d-flex justify-content-around">
       <h4>All events</h4><a style="display: block; text-decoration: none; font-size: 25px" href="/create">+</a>
     </div>
     <hr>
+          <h3 class="ps-3"> События, которые вы организовали</h3>
     {{#each organizer}}
     <li>
       <div class="d-flex bd-highlight">
-        <h3 class="pe-3"> {{this.dataValues.title}}</h3>
         <ul class="nav nav-pills">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Удалить</a>
+          <li class="nav-item mx-3">
+            <a class="nav-link active" aria-current="page" href="/personal/del/{{this.event_identifier}}">Удалить</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"></a>
+
+          <li class="nav-item mx-3">
+            <a class="nav-link active" href="/join/{{this.event_identifier}}">Перейти к мероприятию </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Редактировать</a>
-          </li>
+          <h3 class="ps-3"> {{this.title}}</h3>
         </ul>
       </div>
+        <h3 class="ps-3">Пришлашение: {{this.event_identifier}}  </h3>
     </li>
     {{/each}}
-    {{#each memberEvents}}
-    <li>
+           <h3 class="ps-3"> События, на которые Вы хотите пойти</h3>
+   {{#each memberEvents}}
       <div class="d-flex bd-highlight">
-        <h3 class="pe-3"> {{this.dataValues.title}}</h3>
         <ul class="nav nav-pills">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Не хочу идти</a>
+          <li class="nav-item mx-3">
+            <a class="nav-link active" aria-current="page" href="/personal/await/{{this.event_identifier}}">Не хочу идти</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"></a>
+          <li class="nav-item mx-3">
+            <a class="nav-link active" href="/join/{{this.event_identifier}}">Перейти к мероприятию </a>
           </li>
+          <h3 class="ps-3"> {{this.title}}</h3>
         </ul>
       </div>
+        <h3 class="ps-3">Пришлашение: {{this.event_identifier}}  </h3>
     </li>
-    {{/each}}
+   {{/each}}
     </ul>
   </div>
 </div>

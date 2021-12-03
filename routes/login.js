@@ -5,21 +5,25 @@ const { User } = require('../db/models');
 router
   .route('/')
   .get((req, res) => {
+    const { error } = req.query;
     if (req.session.user) {
-      res.redirect('/personal');
+      return res.redirect('/personal');
     }
-    res.render('login');
+    res.render('login', { error });
   })
   .post(async (req, res) => {
     const { name, password } = req.body;
     const userToLogin = await User.findOne({ where: { name } });
-    const hash = await bcrypt.hash(password, userToLogin.pass);
+    if (!userToLogin) {
+      res.redirect('/login?error=user_not_found');
+    }
+    const hash = await bcrypt.compare(password, userToLogin.password);
     if (!hash) {
-      return res.redirect('/log?error=not_found');
+      return res.redirect('/login?error=wrong_password');
     }
 
     req.session.user = userToLogin.name;
-    req.session.userId = userToLogin.id;
+    req.session.userid = userToLogin.id;
     return res.redirect('/personal');
   });
 

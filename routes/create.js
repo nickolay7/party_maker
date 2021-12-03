@@ -4,28 +4,40 @@ const { Event, User } = require('../db/models');
 router
   .route('/')
   .get(async (req, res) => {
-    // if (req.session.user) {
-      res.render('editEvent');
-    // }
-    // res.redirect('/reg');
+    res.render('editEvent');
   })
   .post(async (req, res) => {
-    if (req.session.user) {
-      res.render('createEvent');
-    }
-    res.redirect('/reg');
+    const randomaze = () => {
+      let text = '';
+      const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      for (let i = 0; i < 10; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+      }
+      return text;
+    };
+    const random = randomaze();
+    const { title, event_date, location } = req.body;
+    await Event.create({
+      title,
+      organizer: req.session.userid,
+      event_date,
+      location,
+      event_identifier: random,
+    });
+
+    res.redirect('/personal');
   });
 
 module.exports = router;
- /*
+/*
  ## tableName
 profileQuestionare
 
-## Fields 
-{{interests.myProp}} ##свойство объекта интереса. 
+## Fields
+{{interests.myProp}} ##свойство объекта интереса.
 {{doYouSmoke}}
 {{doYouDrink}}
 {{wannaChat}}
 {{nightGoal.property}}
-{{linkSocialHtml}} 
+{{linkSocialHtml}}
 */

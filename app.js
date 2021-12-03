@@ -29,10 +29,11 @@ const sessionConfig = {
   },
 };
 
-app.set("view engine", "hbs");
-app.set("views", path.join(__dirname, "views"));
-app.use(logger("dev"));
-app.use(express.static(path.join(__dirname, "public")));
+
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
+app.use(logger('dev'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
@@ -56,14 +57,20 @@ const eventRouter = require("./routes/event");
 // страница редактирования ивента
 const editRouter = require("./routes/edit");
 
-app.use("/", indexRouter);
-app.use("/reg", regRouter);
-app.use("/login", loginRouter);
-app.use("/logout", logoutRouter);
-app.use("/personal", personalRouter);
-app.use("/create", createRouter);
-app.use("/join", joinRouter);
-app.use("/event", eventRouter);
-app.use("/edit", editRouter);
+app.use((req, res, next) => {
+  res.locals.name = req.session.user;
+  res.locals.id = req.session.userid;
+  next();
+});
+
+app.use('/', indexRouter);
+app.use('/reg', regRouter);
+app.use('/login', loginRouter);
+app.use('/logout', logoutRouter);
+app.use('/personal', personalRouter);
+app.use('/create', createRouter);
+app.use('/join', joinRouter);
+app.use('/event', eventRouter);
+app.use('/edit', editRouter);
 
 // module.exports = server;
