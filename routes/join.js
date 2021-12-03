@@ -20,6 +20,7 @@ router.route('/:eventId').get(async (req, res) => {
       || e.interes_2 == user.interes_1
       || e.interes_3 == user.interes_1;
   });
+  
   const interes_2 = event.Users.filter((e) => {
     e.interes_1 == user.interes_2
       || e.interes_2 == user.interes_2
@@ -32,9 +33,9 @@ router.route('/:eventId').get(async (req, res) => {
   });
   res.render('ifLogin', {
     event,
-    interes_1,
-    interes_2,
-    interes_3,
+    // interes_1,
+    // interes_2,
+    // interes_3,
   });
 });
 
@@ -54,7 +55,7 @@ module.exports = router;
 //   event.dataValues.Users.forEach(e => {
 //     console.log(e.dataValues.name);
 //   });
-    
+
 
 // }
 // test();
