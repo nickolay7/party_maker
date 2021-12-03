@@ -8,7 +8,7 @@
         <a class="nav-link" href="#"></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="#">Мероприятия</a>
+        <a class="nav-link" href="/">Home</a>
       </li>
     </ul>
     <hr>
@@ -23,9 +23,9 @@
           <li class="nav-item mx-3">
             <a class="nav-link active" aria-current="page" href="/personal/del/{{this.event_identifier}}">Удалить</a>
           </li>
-   
+
           <li class="nav-item mx-3">
-            <a class="nav-link active" href="/join/{{this.id}}">Перейти к мероприятию </a> 
+            <a class="nav-link active" href="/join/{{this.event_identifier}}">Перейти к мероприятию </a>
           </li>
           <h3 class="ps-3"> {{this.title}}</h3>
         </ul>
@@ -33,21 +33,21 @@
         <h3 class="ps-3">Пришлашение: {{this.event_identifier}}  </h3>
     </li>
     {{/each}}
-    {{#each memberEvents}}
-    <li>
-      <div class="d-flex bd-highlight">
-        <h3 class="pe-3"> {{this.dataValues.title}}</h3>
-        <ul class="nav nav-pills">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Не хочу идти</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"></a>
-          </li>
-        </ul>
-      </div>
-    </li>
-    {{/each}}
+<!--    {{#each memberEvents}}-->
+<!--    <li>-->
+<!--      <div class="d-flex bd-highlight">-->
+<!--        <h3 class="pe-3"> {{this.dataValues.title}}</h3>-->
+<!--        <ul class="nav nav-pills">-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link active" aria-current="page" href="#">Не хочу идти</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" href="#"></a>-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </li>-->
+<!--    {{/each}}-->
     </ul>
   </div>
 </div>

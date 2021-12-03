@@ -17,7 +17,7 @@ router
     };
     const random = randomaze();
     const { title, event_date, location } = req.body;
-    const event = await Event.create({
+    await Event.create({
       title,
       organizer: req.session.userid,
       event_date,

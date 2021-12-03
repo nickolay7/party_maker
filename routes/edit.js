@@ -5,13 +5,13 @@ router
   .route('/')
   .get(async (req, res) => {
     if (req.session.user) {
-      res.render('createEvent');
+      res.render('editEvent');
     }
     res.redirect('/reg');
   })
   .post(async (req, res) => {
     if (req.session.user) {
-      res.render('createEvent');
+      res.render('editEvent');
     }
     res.redirect('/reg');
   }); // редактирование мероприятия
