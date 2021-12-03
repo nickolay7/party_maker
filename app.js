@@ -56,6 +56,12 @@ const eventRouter = require('./routes/event');
 // страница редактирования ивента
 const editRouter = require('./routes/edit');
 
+app.use((req, res, next) => {
+  res.locals.name = req.session.user;
+  res.locals.id = req.session.userid;
+  next();
+});
+
 app.use('/', indexRouter);
 app.use('/reg', regRouter);
 app.use('/login', loginRouter);
