@@ -8,28 +8,27 @@ const { Event, User, Entry } = require('../db/models');
 router.route('/:eventId').get(async (req, res) => {
   //! Работает не только в теории, но и на практике
   const user = await User.findOne({ where: { id: req.session.userid } });
-
-  const event = await Event.findAll({
+  
+  const event = await Event.findOne({
     include: User,
     where: { event_identifier: req.params.eventId },
   });
-
   const entry = await Entry.create({event_id: event.id, user_id: user.id})
-
-  const interes_1 = event.dataValues.Users.filter((e) => {
-    e.dataValue.interes_1 == user.interes_1
-      || e.dataValue.interes_2 == user.interes_1
-      || e.dataValue.interes_3 == user.interes_1;
+  
+  const interes_1 = event.Users.filter((e) => {
+    e.interes_1 == user.interes_1
+      || e.interes_2 == user.interes_1
+      || e.interes_3 == user.interes_1;
   });
-  const interes_2 = event.dataValues.Users.filter((e) => {
-    e.dataValue.interes_1 == user.interes_2
-      || e.dataValue.interes_2 == user.interes_2
-      || e.dataValue.interes_3 == user.interes_2;
+  const interes_2 = event.Users.filter((e) => {
+    e.interes_1 == user.interes_2
+      || e.interes_2 == user.interes_2
+      || e.interes_3 == user.interes_2;
   });
-  const interes_3 = event.dataValues.Users.filter((e) => {
-    e.dataValue.interes_1 == user.interes_3
-      || e.dataValue.interes_2 == user.interes_3
-      || e.dataValue.interes_3 == user.interes_3;
+  const interes_3 = event.Users.filter((e) => {
+    e.interes_1 == user.interes_3
+      || e.interes_2 == user.interes_3
+      || e.interes_3 == user.interes_3;
   });
   res.render('ifLogin', {
     event,

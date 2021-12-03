@@ -6,7 +6,7 @@ router
   .route('/')
   .get((req, res) => {
     if (req.session.user) {
-      res.redirect('/personal');
+      return res.redirect('/personal');
     }
     res.render('login');
   })
