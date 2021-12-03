@@ -13,7 +13,7 @@ router
   .post(async (req, res) => {
     const { name, password } = req.body;
     const userToLogin = await User.findOne({ where: { name } });
-    const hash = await bcrypt.hash(password, userToLogin.password);
+    const hash = await bcrypt.compare(password, userToLogin.password);
     if (!hash) {
       return res.redirect('/log?error=not_found');
     }
